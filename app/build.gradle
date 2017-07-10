@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion "25.0.0"
     defaultConfig {
         applicationId "com.redditclone"
         minSdkVersion 15
@@ -19,12 +20,52 @@ android {
     }
 }
 
+ext {
+    supportLibVer = '25.0.0'
+    daggerVer = '2.7'
+    javaxVer = '1.0'
+    constraintlayoutVer = '1.0.1'
+    espressoVer = '2.2.2'
+    junitVer = '4.12'
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+
+    // Support lib
+    compile "com.android.support:appcompat-v7:${supportLibVer}"
+    compile "com.android.support:design:${supportLibVer}"
+    compile "com.android.support:support-v4:${supportLibVer}"
+    compile "com.android.support:support-annotations:${supportLibVer}"
+    compile "com.android.support.constraint:constraint-layout:${constraintlayoutVer}"
+
+    // Dependency Injection
+    apt "com.google.dagger:dagger-compiler:${daggerVer}"
+    compile "com.google.dagger:dagger:${daggerVer}"
+    provided "javax.annotation:jsr250-api:${javaxVer}"
+
+    // Tests
+    androidTestCompile("com.android.support.test.espresso:espresso-core:${espressoVer}", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
+
+    androidTestCompile "com.android.support.test.espresso:espresso-contrib:${espressoVer}", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+        exclude group: 'com.android.support', module: 'multidex'
+    }
+    androidTestCompile('com.android.support.test.espresso:espresso-idling-resource:2.2') {
+        exclude module: 'support-annotations'
+    }
+
+    //Dependencies for JUNit and unit tests.
+    testCompile "junit:junit:${junitVer}"
+    testCompile 'org.mockito:mockito-all:1.10.19'
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
+    testCompile 'org.powermock:powermock-module-junit4:1.6.2'
+    testCompile 'org.powermock:powermock-api-mockito:1.6.2'
+    testCompile 'com.squareup.okhttp3:mockwebserver:3.4.0-RC1'
 }
