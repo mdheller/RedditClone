@@ -1,6 +1,11 @@
-package com.redditclone.data.remote;
+package com.redditclone.data.local;
 
 import android.app.Application;
+
+import com.redditclone.BaseApplication;
+import com.redditclone.data.model.Forum;
+
+import java.util.ArrayList;
 
 /**
  * @author Tosin Onikute.
@@ -17,4 +22,14 @@ public class ForumInteractorImpl implements ForumInteractor {
     public ForumInteractorImpl(Application application) {
         this.application = application;
     }
+
+    public void addNewPost(Forum forum, ArrayList<Forum> forumList,String title, String desc){
+        forum = new Forum();
+        forum.setPostTitle(title);
+        forum.setPostDesc(desc);
+        forumList.add(forum);
+        ((BaseApplication) application).setForum(forumList);
+    }
+
+
 }

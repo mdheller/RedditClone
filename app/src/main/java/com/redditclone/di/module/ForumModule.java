@@ -2,9 +2,9 @@ package com.redditclone.di.module;
 
 import android.app.Application;
 
-import com.redditclone.data.remote.ForumInteractor;
-import com.redditclone.data.remote.ForumInteractorImpl;
-import com.redditclone.ui.list.ListForumPresenter;
+import com.redditclone.data.local.ForumInteractor;
+import com.redditclone.data.local.ForumInteractorImpl;
+import com.redditclone.ui.post.PostPresenter;
 
 import dagger.Module;
 import dagger.Provides;
@@ -23,8 +23,8 @@ public class ForumModule {
     }
 
     @Provides
-    public ListForumPresenter getHelloPresenter(ForumInteractor forumInteractor){
-        return new ListForumPresenter(application, forumInteractor);
+    public PostPresenter getHelloPresenter(ForumInteractor forumInteractor){
+        return new PostPresenter(application, forumInteractor);
     }
 
 

@@ -65,7 +65,7 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_up"
+                android:src="@drawable/ic_vote_up"
                 android:background="@color/window_background"/>
 
             <TextView
@@ -78,7 +78,7 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_down"
+                android:src="@drawable/ic_vote_down"
                 android:paddingLeft="30dp"
                 android:background="@color/window_background"/>
 

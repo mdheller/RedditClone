@@ -8,6 +8,7 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#333333</color>
     <color name="colorSeparator">#cccccc</color>
+    <color name="colorSeparatorDark">#666666</color>
     <color name="colorGreen">#27ae60</color>
     <color name="window_background">#FFF5F5F5</color>
     <color name="transparent">#00000000</color>

@@ -1,6 +1,7 @@
 package com.redditclone.ui.detail;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -9,22 +10,21 @@ import com.redditclone.BaseApplication;
 import com.redditclone.R;
 import com.redditclone.di.component.ForumComponent;
 import com.redditclone.ui.base.BaseActivity;
-import com.redditclone.ui.list.ListForumPresenter;
-import com.redditclone.ui.list.ListForumView;
 
-import javax.inject.Inject;
+public class DetailActivity extends BaseActivity implements DetailForumView {
 
-public class DetailActivity extends BaseActivity implements ListForumView {
 
-    @Inject
-    ListForumPresenter presenter;
 
     @Override
     protected void setupActivity(ForumComponent component, Bundle savedInstanceState) {
         setContentView(R.layout.activity_detail);
         ((BaseApplication) getApplication()).getComponent().inject(this);
-        presenter.attachView(this);
 
+
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         init();
 

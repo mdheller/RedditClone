@@ -2,8 +2,8 @@ package com.redditclone.di.module;
 
 import android.app.Application;
 
-import com.redditclone.data.remote.ForumInteractor;
-import com.redditclone.data.remote.ForumInteractorImpl;
+import com.redditclone.data.local.ForumInteractor;
+import com.redditclone.data.local.ForumInteractorImpl;
 
 import javax.inject.Singleton;
 
