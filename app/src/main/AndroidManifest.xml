@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".ui.list.ListForumActivity">
+        <activity
+            android:name=".ui.list.ListForumActivity"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,7 +20,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize"></activity>
+
+        <activity
+            android:name=".ui.detail.DetailActivity"
+            android:configChanges="orientation|screenSize"></activity>
+
+        <activity
+            android:name=".ui.post.PostActivity"
+            android:configChanges="orientation|screenSize"></activity>
 
     </application>
 
