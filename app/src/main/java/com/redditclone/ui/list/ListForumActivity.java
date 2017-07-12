@@ -16,6 +16,7 @@ import com.redditclone.BaseApplication;
 import com.redditclone.R;
 import com.redditclone.data.model.Forum;
 import com.redditclone.di.component.ForumComponent;
+import com.redditclone.ui.alltopics.AllTopicsActivity;
 import com.redditclone.ui.base.BaseActivity;
 import com.redditclone.ui.post.PostActivity;
 import com.redditclone.util.Logger;
@@ -34,6 +35,7 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
     private MaterialProgressBar progressBar;
     private LinearLayoutManager layoutManager;
     private TextView noPostYet;
+    private TextView topTopics;
 
     private ArrayList<Forum> listPost;
 
@@ -54,6 +56,7 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
     // Initialize the view
     public void init() {
         progressBar = (MaterialProgressBar) findViewById(R.id.material_progress_bar);
+        topTopics = (TextView) findViewById(R.id.top_topics);
         mainLayout = (RelativeLayout) findViewById(R.id.main_layout);
         layoutManager = new LinearLayoutManager(getApplicationContext());
         noPostYet = (TextView) findViewById(R.id.no_post_yet);
@@ -69,6 +72,7 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
         progressBar.setVisibility(View.GONE);
         if(forumArrayList != null && forumArrayList.size() > 0) {
             noPostYet.setVisibility(View.GONE);
+            topTopics.setText("Top 20 topics");
             adapter = new ForumListAdapter(getApplicationContext(), forumArrayList);
             recyclerView.setAdapter(adapter); // set adapter on recyclerview
         }
@@ -82,8 +86,7 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
 
         if(listPost != null) {
             /*
-            Sort using Integer signsum
-
+            Sort using Integer signsum function
              */
             Collections.sort(listPost, new Comparator<Forum>() {
                 @Override
@@ -91,16 +94,21 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
                     return Integer.signum(f2.getUpvotes() - f1.getUpvotes());
                 }
             });
-
         }
 
 
         setAdapter(listPost);
+
     }
 
 
     public void launchPostActivity(View view){
         Intent intent = new Intent(this, PostActivity.class);
+        startActivity(intent);
+    }
+
+    public void allTopics(){
+        Intent intent = new Intent(this, AllTopicsActivity.class);
         startActivity(intent);
     }
 
@@ -124,7 +132,7 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.list_forum_menu, menu);
+        inflater.inflate(R.menu.alltopics_forum_menu, menu);
         return true;
     }
 
@@ -136,6 +144,8 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
             case android.R.id.home:
                 onBackPressed();
                 return true;
+            case R.id.action_all_post:
+                allTopics();
         }
         return super.onOptionsItemSelected(item);
     }

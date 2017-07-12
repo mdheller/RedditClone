@@ -20,13 +20,6 @@
             android:background="@color/colorWhite"
             android:theme="@style/custom_toolbar">
 
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_reddit"
-                android:paddingLeft="5dp"
-                android:layout_gravity="left"/>
-
             <TextView
                 android:id="@+id/top_topics"
                 android:layout_width="wrap_content"
@@ -34,7 +27,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorAccent"
-                android:text="@string/list_forum"
+                android:text="@string/all_topics"
                 android:paddingLeft="10dp"
                 />
 

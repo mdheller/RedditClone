@@ -14,13 +14,16 @@
     <string name="e_button">Edit Topic</string>
 
     <!-- list post -->
-    <string name="list_forum">Popular topics</string>
-    <string name="l_no_topic">No post found, tap on the float button to create post !</string>
+    <string name="list_forum">Top 20 topics</string>
+    <string name="l_no_topic">No topic found, tap on the float button to create topic !</string>
 
     <!-- create post -->
     <string name="create_post">Create Topic</string>
     <string name="c_post_title">Your Topic title</string>
     <string name="c_post_desc">Your Topic Details</string>
     <string name="c_button">Create Topic</string>
+
+    <!-- all topics -->
+    <string name="all_topics">All Topics</string>
 
 </resources>

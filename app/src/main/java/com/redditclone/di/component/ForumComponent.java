@@ -3,6 +3,7 @@ package com.redditclone.di.component;
 import com.redditclone.di.module.ForumFetcherModule;
 import com.redditclone.di.module.ForumModule;
 import com.redditclone.di.scope.UserScope;
+import com.redditclone.ui.alltopics.AllTopicsActivity;
 import com.redditclone.ui.detail.DetailActivity;
 import com.redditclone.ui.edit.EditPostActivity;
 import com.redditclone.ui.list.ListForumActivity;
@@ -23,6 +24,7 @@ public interface ForumComponent {
     void inject(PostActivity postActivity);
     void inject(DetailActivity detailActivity);
     void inject(EditPostActivity editPostActivity);
+    void inject(AllTopicsActivity allTopicsActivity);
 
 }
 

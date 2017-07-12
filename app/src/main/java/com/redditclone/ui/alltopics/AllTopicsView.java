@@ -1,4 +1,4 @@
-package com.redditclone.ui.list;
+package com.redditclone.ui.alltopics;
 
 
 import com.redditclone.ui.base.MvpView;
@@ -7,7 +7,7 @@ import com.redditclone.ui.base.MvpView;
  * @author Tosin Onikute.
  */
 
-public interface ListForumView extends MvpView {
+public interface AllTopicsView extends MvpView {
 
     void init();
 

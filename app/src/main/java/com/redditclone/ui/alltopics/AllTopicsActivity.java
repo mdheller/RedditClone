@@ -1,4 +1,4 @@
-package com.redditclone.ui.list;
+package com.redditclone.ui.alltopics;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,11 +25,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class ListForumActivity extends BaseActivity implements ListForumView {
+public class AllTopicsActivity extends BaseActivity implements AllTopicsView {
 
     private Logger logger = Logger.getLogger(getClass());
     private RelativeLayout mainLayout;
-    private ForumListAdapter adapter;
+    private AllForumListAdapter adapter;
     private RecyclerView recyclerView;
     private MaterialProgressBar progressBar;
     private LinearLayoutManager layoutManager;
@@ -41,12 +41,13 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
 
     @Override
     protected void setupActivity(ForumComponent component, Bundle savedInstanceState) {
-        setContentView(R.layout.activity_list_forum);
+        setContentView(R.layout.activity_topics);
         ((BaseApplication) getApplication()).getComponent().inject(this);
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         init();
 
@@ -67,11 +68,12 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
     }
 
 
-    public void setAdapter(ArrayList<Forum> forumArrayList, int a){
+    public void setAdapter(ArrayList<Forum> forumArrayList){
         progressBar.setVisibility(View.GONE);
         if(forumArrayList != null && forumArrayList.size() > 0) {
+            topTopics.setText("All Topics");
             noPostYet.setVisibility(View.GONE);
-            adapter = new ForumListAdapter(getApplicationContext(), forumArrayList);
+            adapter = new AllForumListAdapter(getApplicationContext(), forumArrayList);
             recyclerView.setAdapter(adapter); // set adapter on recyclerview
         }
     }
@@ -80,7 +82,6 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
     protected void onResume() {
         super.onResume();
 
-        int a = 0;
         listPost = ((BaseApplication) getApplication()).getForum();
 
         if(listPost != null) {
@@ -94,13 +95,9 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
                 }
             });
 
-            a = 1;
-            setAdapter(listPost, a);
-
-        } else {
-            setAdapter(listPost, a);
         }
 
+        setAdapter(listPost);
 
     }
 

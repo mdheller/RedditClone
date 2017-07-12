@@ -80,7 +80,7 @@ public class PostActivity extends BaseActivity implements PostView {
 
 
     public void successMsg(){
-        Toast.makeText(getApplicationContext(), "Post Created Sucessfully", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Topic Created Sucessfully", Toast.LENGTH_SHORT).show();
         openListActivity();
     }
 

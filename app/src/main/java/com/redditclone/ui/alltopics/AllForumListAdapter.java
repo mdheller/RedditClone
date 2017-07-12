@@ -1,4 +1,4 @@
-package com.redditclone.ui.list;
+package com.redditclone.ui.alltopics;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,8 +24,8 @@ import java.util.List;
  * @author Tosin Onikute.
  */
 
-public class ForumListAdapter
-        extends RecyclerView.Adapter<ForumListAdapter.ViewHolder> {
+public class AllForumListAdapter
+        extends RecyclerView.Adapter<AllForumListAdapter.ViewHolder> {
 
     private final Logger logger = Logger.getLogger(getClass());
     private final TypedValue mTypedValue = new TypedValue();
@@ -75,7 +75,7 @@ public class ForumListAdapter
         return String.valueOf("");
     }
 
-    public ForumListAdapter(Context context, ArrayList<Forum> mForum) {
+    public AllForumListAdapter(Context context, ArrayList<Forum> mForum) {
         context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
         mContext = context;
         mBackground = mTypedValue.resourceId;
@@ -162,23 +162,14 @@ public class ForumListAdapter
 
     @Override
     public int getItemCount() {
-        //return (null != mForum ? mForum.size() : 0);
-        //return 5;
-
-        // Top 20 topics Only
-        if(mForum.size() <= 20)
-            return mForum.size();
-        else
-            return 20;
+        return (null != mForum ? mForum.size() : 0);
     }
 
     public void addAll(List<Forum> data){
-        //mForum.addAll(data);
         notifyDataSetChanged();
     }
 
     public void add(Forum data){
-        //mForum.addAll(data);
         notifyDataSetChanged();
         mForum.add(data);
     }

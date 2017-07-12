@@ -162,16 +162,19 @@ public class ForumListAdapter
 
     @Override
     public int getItemCount() {
-        return (null != mForum ? mForum.size() : 0);
+
+        // Top 20 topics Only
+        if(mForum.size() <= 20)
+            return mForum.size();
+        else
+            return 20;
     }
 
     public void addAll(List<Forum> data){
-        //mForum.addAll(data);
         notifyDataSetChanged();
     }
 
     public void add(Forum data){
-        //mForum.addAll(data);
         notifyDataSetChanged();
         mForum.add(data);
     }
