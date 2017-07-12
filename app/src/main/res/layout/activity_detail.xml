@@ -47,6 +47,14 @@
         android:padding="20dp">
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:paddingBottom="5dp"
+            android:text="Title: " />
+
+        <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,50 +62,70 @@
             android:textSize="18sp"
             android:text="What is Lorem Ipsum?" />
 
+
         <LinearLayout
             android:id="@+id/tag_list"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:clickable="false"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:orientation="horizontal">
+            android:paddingBottom="10dp">
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/upvote_button"
+                android:clickable="true"
+                android:onClick="upVote"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:src="@drawable/ic_vote_up"
-                android:background="@color/window_background"/>
+                android:background="@color/transparent"/>
 
             <TextView
+                android:id="@+id/upvote_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:text="1" />
+                android:paddingTop="3dp"
+                android:textSize="16dp"
+                android:text="0" />
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/downvote_button"
+                android:clickable="true"
+                android:onClick="downVote"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:src="@drawable/ic_vote_down"
-                android:paddingLeft="30dp"
-                android:background="@color/window_background"/>
+                android:layout_marginLeft="30dp"
+                android:background="@color/transparent"/>
 
             <TextView
+                android:id="@+id/downvote_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:text="1" />
+                android:paddingTop="3dp"
+                android:textSize="16dp"
+                android:text="0" />
 
 
         </LinearLayout>
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:paddingTop="15dp"
+            android:paddingBottom="5dp"
+            android:textSize="18sp"
+            android:text="Description: " />
+
+        <TextView
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." />
+            android:paddingBottom="5dp" />
 
     </LinearLayout>
 

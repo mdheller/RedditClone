@@ -110,6 +110,9 @@ public class ForumListAdapter
 
         holder.title.setText(ctitle);
         holder.description.setText(cDesc);
+        if(cDesc.length() > 50) {
+            holder.description.setText(cDesc.substring(0, 50) + "...");
+        }
 
         holder.upvoteText.setText(String.valueOf(model.getUpvotes()));
         holder.downvoteText.setText(String.valueOf(model.getDownvotes()));
@@ -125,7 +128,6 @@ public class ForumListAdapter
                 num = num + 1;
                 holder.upvoteText.setText(String.valueOf(num));
                 ((BaseApplication) mContext).getForum().get(position).setUpvotes(num);
-
             }
         });
 
