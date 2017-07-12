@@ -60,11 +60,6 @@ public class PostActivity extends BaseActivity implements PostView {
             @Override
             public void onClick(View view) {
 
-//                forum = new Forum();
-//                forum.setPostTitle(title.getText().toString());
-//                forum.setPostDesc(description.getText().toString());
-//                listPost.add(forum);
-//                ((BaseApplication) getApplication()).setForum(listPost);
                 forum = new Forum();
                 presenter.addNewPost(forum, listPost, title.getText().toString(), description.getText().toString());
 

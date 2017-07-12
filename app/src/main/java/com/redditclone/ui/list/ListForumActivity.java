@@ -21,6 +21,8 @@ import com.redditclone.util.Logger;
 import com.redditclone.util.ui.MaterialProgressBar;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ListForumActivity extends BaseActivity implements ListForumView {
 
@@ -44,10 +46,6 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
         setSupportActionBar(toolbar);
 
         init();
-
-        listPost = ((BaseApplication) getApplication()).getForum();
-        setAdapter(listPost);
-
 
     }
 
@@ -77,6 +75,22 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
         super.onResume();
 
         listPost = ((BaseApplication) getApplication()).getForum();
+
+        if(listPost != null) {
+
+            /*
+            Sort using Integer signsum
+
+             */
+            Collections.sort(listPost, new Comparator<Forum>() {
+                @Override
+                public int compare(Forum f1,Forum f2) {
+                    return Integer.signum(f2.getUpvotes() - f1.getUpvotes());
+                }
+            });
+        }
+
+
         setAdapter(listPost);
     }
 

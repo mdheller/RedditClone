@@ -4,7 +4,7 @@ package com.redditclone.data.model;
  * @author Tosin Onikute.
  */
 
-public class Forum implements java.io.Serializable {
+public class Forum implements java.io.Serializable{
 
     private int id;
     private String postTitle;

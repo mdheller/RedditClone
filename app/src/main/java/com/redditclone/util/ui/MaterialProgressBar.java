@@ -25,7 +25,7 @@ public class MaterialProgressBar extends View {
         super(context, attrs, defStyleAttr);
 
         //TODO: setup deprecate proof color extraction
-        int color = context.getResources().getColor(R.color.colorPrimary);
+        int color = context.getResources().getColor(R.color.colorAccent);
 
         mCircleDrawable = new CircularProgressDrawable(color, 8);
         mCircleDrawable.setCallback(this);
