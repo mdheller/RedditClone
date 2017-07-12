@@ -32,6 +32,10 @@
             android:name=".ui.post.PostActivity"
             android:configChanges="orientation|screenSize"></activity>
 
+        <activity
+            android:name=".ui.edit.EditPostActivity"
+            android:configChanges="orientation|screenSize"></activity>
+
     </application>
 
 </manifest>

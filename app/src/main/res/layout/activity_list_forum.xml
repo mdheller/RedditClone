@@ -18,15 +18,22 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorWhite"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+            android:theme="@style/custom_toolbar">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_reddit"
+                android:paddingLeft="5dp"
+                android:layout_gravity="left"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/colorBlack"
-                android:text="Popular"
+                android:textColor="@color/colorAccent"
+                android:text="@string/list_forum"
                 android:paddingLeft="10dp"
                 />
 
@@ -54,12 +61,27 @@
         android:visibility="gone"
         />
 
+        <TextView
+            android:id="@+id/no_post_yet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="150dp"
+            android:padding="20dp"
+            android:textSize="20sp"
+            android:text="@string/l_no_topic"
+            android:textColor="@color/colorBlack"
+            />
+
+
     <android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/forum_list_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
+
+
 
 
 

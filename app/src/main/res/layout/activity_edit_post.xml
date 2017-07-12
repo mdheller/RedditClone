@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.redditclone.ui.post.PostActivity">
+    tools:context="com.redditclone.ui.edit.EditPostActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorAccent"
-                android:text="@string/create_post"
+                android:text="@string/edit_post"
                 android:paddingLeft="10dp"
                 />
 
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
-            android:hint="@string/c_post_title"
+            android:hint="@string/e_text_title"
             android:maxLength="255"
             android:textSize="18sp" />
 
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:minHeight="150dp"
             android:paddingBottom="5dp"
-            android:hint="@string/c_post_desc"
+            android:hint="@string/e_desc"
             />
 
         <Button
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
             android:textSize="18sp"
-            android:text="@string/c_button" />
+            android:text="@string/e_button" />
 
     </LinearLayout>
 

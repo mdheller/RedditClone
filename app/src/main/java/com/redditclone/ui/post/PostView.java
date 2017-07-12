@@ -13,6 +13,4 @@ public interface PostView extends MvpView {
 
     void successMsg();
 
-    void setFieldEmpty();
-
 }

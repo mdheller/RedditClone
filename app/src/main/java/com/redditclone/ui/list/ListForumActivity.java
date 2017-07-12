@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.redditclone.BaseApplication;
 import com.redditclone.R;
@@ -32,6 +33,7 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
     private RecyclerView recyclerView;
     private MaterialProgressBar progressBar;
     private LinearLayoutManager layoutManager;
+    private TextView noPostYet;
 
     private ArrayList<Forum> listPost;
 
@@ -54,6 +56,7 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
         progressBar = (MaterialProgressBar) findViewById(R.id.material_progress_bar);
         mainLayout = (RelativeLayout) findViewById(R.id.main_layout);
         layoutManager = new LinearLayoutManager(getApplicationContext());
+        noPostYet = (TextView) findViewById(R.id.no_post_yet);
         recyclerView = (RecyclerView) findViewById(R.id.forum_list_recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
@@ -65,6 +68,7 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
     public void setAdapter(ArrayList<Forum> forumArrayList){
         progressBar.setVisibility(View.GONE);
         if(forumArrayList != null && forumArrayList.size() > 0) {
+            noPostYet.setVisibility(View.GONE);
             adapter = new ForumListAdapter(getApplicationContext(), forumArrayList);
             recyclerView.setAdapter(adapter); // set adapter on recyclerview
         }
@@ -77,7 +81,6 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
         listPost = ((BaseApplication) getApplication()).getForum();
 
         if(listPost != null) {
-
             /*
             Sort using Integer signsum
 
@@ -88,6 +91,7 @@ public class ListForumActivity extends BaseActivity implements ListForumView {
                     return Integer.signum(f2.getUpvotes() - f1.getUpvotes());
                 }
             });
+
         }
 
 

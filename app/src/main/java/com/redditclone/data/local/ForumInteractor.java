@@ -16,4 +16,6 @@ public interface ForumInteractor {
 
     void addNewPost(Forum forum, ArrayList<Forum> forumList, String title, String desc);
 
+    void editPost(int position,String title, String desc);
+
 }

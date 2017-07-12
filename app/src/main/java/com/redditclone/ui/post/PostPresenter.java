@@ -38,7 +38,11 @@ public class PostPresenter extends BasePresenter<PostView> {
 
     public void addNewPost(Forum forum, ArrayList<Forum> forumList, String title, String desc){
         forumInteractor.addNewPost(forum, forumList, title, desc);
-        getMvpView().setFieldEmpty();
+        getMvpView().successMsg();
+    }
+
+    public void editExistingPost(int position, String title, String desc){
+        forumInteractor.editPost(position, title, desc);
         getMvpView().successMsg();
     }
 

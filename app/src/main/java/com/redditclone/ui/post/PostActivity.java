@@ -1,5 +1,6 @@
 package com.redditclone.ui.post;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -15,6 +16,7 @@ import com.redditclone.R;
 import com.redditclone.data.model.Forum;
 import com.redditclone.di.component.ForumComponent;
 import com.redditclone.ui.base.BaseActivity;
+import com.redditclone.ui.list.ListForumActivity;
 
 import java.util.ArrayList;
 
@@ -68,13 +70,19 @@ public class PostActivity extends BaseActivity implements PostView {
 
     }
 
-    public void setFieldEmpty(){
-        title.setText("");
-        description.setText("");
-    }
 
     public void successMsg(){
         Toast.makeText(getApplicationContext(), "Post Created Sucessfully", Toast.LENGTH_SHORT).show();
+        openListActivity();
+    }
+
+    public void openListActivity() {
+        Intent intent = new Intent(this, ListForumActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+        finish();
     }
 
 

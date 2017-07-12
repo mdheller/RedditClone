@@ -1,4 +1,4 @@
-package com.redditclone.ui.detail;
+package com.redditclone.ui.edit;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,34 +7,39 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.redditclone.BaseApplication;
 import com.redditclone.R;
 import com.redditclone.data.model.Forum;
 import com.redditclone.di.component.ForumComponent;
 import com.redditclone.ui.base.BaseActivity;
-import com.redditclone.ui.edit.EditPostActivity;
+import com.redditclone.ui.list.ListForumActivity;
+import com.redditclone.ui.post.PostPresenter;
+import com.redditclone.ui.post.PostView;
 
 import java.util.ArrayList;
 
-public class DetailActivity extends BaseActivity implements DetailForumView {
+import javax.inject.Inject;
 
+public class EditPostActivity extends BaseActivity implements PostView {
 
-    private int position = 0;
+    @Inject
+    PostPresenter presenter;
+
+    private EditText title, description;
+    private Button submitButton;
+    private Forum forum;
     private ArrayList<Forum> listItem;
-    private TextView title, description;
-    private ImageView upvoteButton;
-    private ImageView downvoteButton;
-    private TextView upvoteText;
-    private TextView downvoteText;
+    private int position = 0;
 
     @Override
     protected void setupActivity(ForumComponent component, Bundle savedInstanceState) {
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_edit_post);
         ((BaseApplication) getApplication()).getComponent().inject(this);
-
+        presenter.attachView(this);
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
@@ -52,16 +57,23 @@ public class DetailActivity extends BaseActivity implements DetailForumView {
             }
         }
 
+
     }
 
     // Initialize the view
     public void init() {
-        title = (TextView) findViewById(R.id.title);
-        description = (TextView) findViewById(R.id.description);
-        upvoteButton = (ImageView) findViewById(R.id.upvote_button);
-        downvoteButton = (ImageView) findViewById(R.id.downvote_button);
-        upvoteText = (TextView) findViewById(R.id.upvote_text);
-        downvoteText = (TextView) findViewById(R.id.downvote_text);
+        title = (EditText) findViewById(R.id.title);
+        description = (EditText) findViewById(R.id.description);
+        submitButton = (Button) findViewById(R.id.submit_button);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                presenter.editExistingPost(position, title.getText().toString(), description.getText().toString());
+
+            }
+        });
+
     }
 
     public void loadView(){
@@ -73,39 +85,26 @@ public class DetailActivity extends BaseActivity implements DetailForumView {
 
         title.setText(ctitle);
         description.setText(cDesc);
-        upvoteText.setText(String.valueOf(listItem.get(position).getUpvotes()));
-        downvoteText.setText(String.valueOf(listItem.get(position).getDownvotes()));
 
-        upvoteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int num = Integer.parseInt(upvoteText.getText().toString());
-                num = num + 1;
-                upvoteText.setText(String.valueOf(num));
-                ((BaseApplication) getApplication()).getForum().get(position).setUpvotes(num);
-            }
-        });
-
-
-        downvoteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int num = Integer.parseInt(downvoteText.getText().toString());
-                num = num + 1;
-                downvoteText.setText(String.valueOf(num));
-                ((BaseApplication) getApplication()).getForum().get(position).setDownvotes(num);
-
-            }
-        });
     }
 
-    public void editPost(){
-        Intent intent = new Intent(this, EditPostActivity.class);
-        intent.putExtra("position", position);
-        intent.putExtra("mForum", listItem);
+    public void setFieldEmpty(){
+        //
+    }
+
+    public void successMsg(){
+        Toast.makeText(getApplicationContext(), "Edited Sucessfully", Toast.LENGTH_SHORT).show();
+        openListActivity();
+    }
+
+    public void openListActivity() {
+        Intent intent = new Intent(this, ListForumActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
+        finish();
     }
-
 
 
     @Override
@@ -127,7 +126,7 @@ public class DetailActivity extends BaseActivity implements DetailForumView {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.edit_forum_menu, menu);
+        inflater.inflate(R.menu.list_forum_menu, menu);
         return true;
     }
 
@@ -139,8 +138,6 @@ public class DetailActivity extends BaseActivity implements DetailForumView {
             case android.R.id.home:
                 onBackPressed();
                 return true;
-            case R.id.action_edit_post:
-                editPost();
         }
         return super.onOptionsItemSelected(item);
     }

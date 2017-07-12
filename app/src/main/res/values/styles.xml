@@ -18,4 +18,8 @@
 
     <style name="AlertDialogCustom" parent="@android:style/Theme.Dialog"></style>
 
+    <style name="custom_toolbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlNormal">@color/colorAccent</item>
+    </style>
+
 </resources>

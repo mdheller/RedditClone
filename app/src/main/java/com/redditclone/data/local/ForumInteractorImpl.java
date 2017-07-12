@@ -32,4 +32,10 @@ public class ForumInteractorImpl implements ForumInteractor {
     }
 
 
+    public void editPost(int position,String title, String desc){
+        ((BaseApplication) application).getForum().get(position).setPostTitle(title);
+        ((BaseApplication) application).getForum().get(position).setPostDesc(desc);
+    }
+
+
 }

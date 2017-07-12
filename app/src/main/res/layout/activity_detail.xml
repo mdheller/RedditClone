@@ -19,15 +19,15 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorWhite"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+            android:theme="@style/custom_toolbar">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/colorBlack"
-                android:text="Post detail"
+                android:textColor="@color/colorAccent"
+                android:text="@string/post_detail"
                 android:paddingLeft="10dp"
                 />
 
@@ -52,7 +52,7 @@
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
             android:paddingBottom="5dp"
-            android:text="Title: " />
+            android:text="@string/p_text_title" />
 
         <TextView
             android:id="@+id/title"
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
             android:textSize="18sp"
-            android:text="What is Lorem Ipsum?" />
+            android:text="@string/p_lorem_ipsum" />
 
 
         <LinearLayout
@@ -119,7 +119,7 @@
             android:paddingTop="15dp"
             android:paddingBottom="5dp"
             android:textSize="18sp"
-            android:text="Description: " />
+            android:text="@string/p_desc" />
 
         <TextView
             android:id="@+id/description"
