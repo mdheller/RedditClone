@@ -2,6 +2,7 @@ package com.redditclone.ui.post;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -9,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.redditclone.BaseApplication;
@@ -28,9 +31,11 @@ public class PostActivity extends BaseActivity implements PostView {
     PostPresenter presenter;
 
     private EditText title, description;
+    private LinearLayout mainLayout;
     private Button submitButton;
     private Forum forum;
     private ArrayList<Forum> listPost;
+    private Snackbar msg;
 
     @Override
     protected void setupActivity(ForumComponent component, Bundle savedInstanceState) {
@@ -57,13 +62,16 @@ public class PostActivity extends BaseActivity implements PostView {
     public void init() {
         title = (EditText) findViewById(R.id.title);
         description = (EditText) findViewById(R.id.description);
+        mainLayout = (LinearLayout) findViewById(R.id.main_layout);
         submitButton = (Button) findViewById(R.id.submit_button);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                forum = new Forum();
-                presenter.addNewPost(forum, listPost, title.getText().toString(), description.getText().toString());
+                if(validation()) {
+                    forum = new Forum();
+                    presenter.addNewPost(forum, listPost, title.getText().toString(), description.getText().toString());
+                }
 
             }
         });
@@ -83,6 +91,25 @@ public class PostActivity extends BaseActivity implements PostView {
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
         finish();
+    }
+
+
+    public boolean validation(){
+        if(title.getText().toString().equals("")){
+            snackMsg("Please enter a title");
+        } else if(description.getText().toString().equals("")){
+            snackMsg("Please enter a description");
+        } else {
+            return true;
+        }
+        return false;
+    }
+
+    public void snackMsg(String message) {
+        msg = Snackbar.make(mainLayout, message, Snackbar.LENGTH_SHORT);
+        TextView snackbarText = (TextView) msg.getView().findViewById(android.support.design.R.id.snackbar_text);
+        snackbarText.setTextColor(getApplicationContext().getResources().getColor(android.R.color.white));
+        msg.show();
     }
 
 

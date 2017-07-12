@@ -2,25 +2,25 @@
     <string name="app_name">Reddit</string>
 
     <!-- post detail -->
-    <string name="post_detail">Post detail</string>
+    <string name="post_detail">Topic detail</string>
     <string name="p_text_title">Title: </string>
     <string name="p_lorem_ipsum">What is Lorem Ipsum?</string>
     <string name="p_desc">Description: </string>
 
     <!-- edit post -->
-    <string name="edit_post">Edit Post detail</string>
-    <string name="e_text_title">Your Post title</string>
-    <string name="e_desc">Your Post Details</string>
-    <string name="e_button">Edit Post</string>
+    <string name="edit_post">Edit Topic detail</string>
+    <string name="e_text_title">Your Topic title</string>
+    <string name="e_desc">Your Topic Details</string>
+    <string name="e_button">Edit Topic</string>
 
     <!-- list post -->
     <string name="list_forum">Popular topics</string>
     <string name="l_no_topic">No post found, tap on the float button to create post !</string>
 
     <!-- create post -->
-    <string name="create_post">Create Post</string>
-    <string name="c_post_title">Your Post title</string>
-    <string name="c_post_desc">Your Post Details</string>
-    <string name="c_button">Create Post</string>
+    <string name="create_post">Create Topic</string>
+    <string name="c_post_title">Your Topic title</string>
+    <string name="c_post_desc">Your Topic Details</string>
+    <string name="c_button">Create Topic</string>
 
 </resources>
