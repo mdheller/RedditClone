@@ -5,6 +5,7 @@ A Digg / Reddit clone with upvote and downvotes
 -  Follows MVP architectural pattern
 -  Uses Dagger2 for DI
 -  Use Gradle to build, jCenter/Maven Central for dependencies (no .jar dependencies)
+-  Includes Automated Espresso UI Test
 
 ## Functionality present
 
