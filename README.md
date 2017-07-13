@@ -31,6 +31,8 @@ A Digg / Reddit clone with upvote and downvotes
  - Sorting the Upvotes: For this, I used the in-built Collections.sort method with Comparator, along with the Integer signsum Java function which returns
  -1, if the value is negative and zero, if the value is 0, It returns 1 if the value is positive.
 
+- 255 Characters topic limit: For this, I implemented in-built android xml android:maxLength="255" option.
+
 
 ## App has 5 screens
 
